@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+</head>
+<body>
+<div class="logo-container">
+        <img src="static/images/logo.png" alt="Logo" class="logo-image">
+</div>
+    <h1>URL Shortener</h1>
+
+    <form method="post" action="/shorten">
+        <label for="url">Enter URL:</label>
+        <input type="url" name="url" id="url" required>
+        <button type="submit">Shorten URL</button>
+    </form>
+
+    <h2>URLs:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Original URL</th>
+                <th>Shortened URL</th>
+                <th>Creation Time</th>
+                <th>Redirects</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for url in urls %}
+            <tr>
+                    <td>{{ url[0] }}</td>
+                    <td><a href="{{ url[1] }}" target="_blank">{{ url[1] }}</a></td>
+                    <td>{{ url[2] }}</td>
+                    <td>{{ url[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

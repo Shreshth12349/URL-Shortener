@@ -1,0 +1,5 @@
+uvicorn
+fastapi~=0.109.0
+pydantic~=2.5.3
+jinja2
+python-multipart
